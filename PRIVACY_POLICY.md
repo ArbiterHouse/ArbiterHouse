@@ -1,8 +1,15 @@
 # Arbiter House Privacy Policy
 
-Effective date: 11 October 2026
+Effective date: 18 October 2026
 
 This policy covers the Arbiter House iPhone and iPad app (bundle identifier `ArbiterHouse`). The app compares language models with your prompt and recommends suitable models. It does not run your prompt on the recommended models.
+
+## Privacy at a glance
+
+- **On your device:** the app stores drafts, original prompts, saved results, and comparison progress locally. There is no cloud history sync.
+- **Sent for scoring:** after you confirm a comparison, retry, or continuation, the app sends your prompt or a shortened excerpt and model information through `api.typesafe.pro` to TypeSafe AI. Editing a draft or reading saved results does not send a scoring request.
+- **Kept by providers:** the gateway retains operational records, including connection and usage information; error excerpts may contain submitted text. TypeSafe AI has its own processing and retention terms. Remote scoring is not anonymous or a zero-retention service.
+- **Your controls:** you can decline sending, cancel unfinished work, and delete local data. Deleting local data does not delete records held by providers or retract requests already sent.
 
 ## Developer and contact
 
@@ -24,7 +31,9 @@ These files use iOS file protection and are marked as excluded from backups. We 
 
 ## When information leaves your device
 
-Selecting **Find my model**, **Retry remaining models**, or **Continue** starts or resumes remote scoring. The app sends HTTPS requests to `https://api.typesafe.pro/v1/systemone`, an independent gateway that forwards evaluations to **TypeSafe AI, Inc.** at `api.typesafe.ai`.
+Selecting **Find my model**, **Retry remaining models**, or **Continue scoring** opens a confirmation before remote scoring starts or resumes. The confirmation explains that text will leave your device and identifies the scoring services. Cancelling that confirmation sends no scoring request. Permission covers that comparison's batches and automatic retries; a later manual retry or continuation asks again.
+
+After you confirm, the app sends HTTPS requests to `https://api.typesafe.pro/v1/systemone`, an independent gateway that forwards evaluations to **TypeSafe AI, Inc.** at `api.typesafe.ai`.
 
 Requests contain your prompt or its shortened excerpt, the candidate models' IDs, names and descriptions, scoring instructions and criteria, question identifiers, and the evaluator model/version. A comparison uses multiple batches, so the same excerpt is transmitted more than once. Automatic retries may resend a batch. If the service rejects a request as too large, the app can shorten the excerpt further and restart the comparison.
 
@@ -34,11 +43,15 @@ No app account or user API key is required. However, network requests are not an
 
 ## Gateway and upstream processing
 
-The gateway operator's [published TypeSafe app privacy policy](https://github.com/e-eugene/TypeSafe-ios/blob/main/PRIVACY_POLICY.md) identifies **NEXABRIDGE LTD** and describes its gateway practices. It reports that request bodies and successful answers are not saved in its application database, while operational records include IP addresses, request identifiers, times, routes, status/error codes, sizes, timings, and token usage. Diagnostics can contain upstream error excerpts that may echo submitted content.
+The gateway operator's [published TypeSafe app privacy policy](https://github.com/e-eugene/TypeSafe-ios/blob/main/PRIVACY_POLICY.md) identifies **NEXABRIDGE LTD** and describes its gateway practices. It reports that request bodies and successful answers are not saved in its application database. This does not mean that no information is collected or retained.
 
-That policy describes seven-day expiry for activity and database error records, with periodic cleanup, and separate diagnostic logs that rotate by size. These are the gateway operator's stated practices, not a guarantee that all copies disappear after seven days. Local deletion in Arbiter House does not control those records.
+Gateway operational records include IP addresses, identifiers derived from IP addresses, request identifiers and counts, times, routes, status/error codes, sizes, timings, and token usage. These support rate limits, abuse prevention, availability, and troubleshooting. An identifier derived from an IP address can associate repeated requests; it does not make those records anonymous. Diagnostics can contain upstream error excerpts that may echo submitted content. Removing credentials from an error excerpt does not guarantee that all personal information has been removed.
+
+That policy describes a configured seven-day expiry for activity and database error records, with periodic cleanup, and separate diagnostic logs that rotate by size. These are the gateway operator's stated practices, not a guaranteed deletion deadline for every copy. This setting does not control TypeSafe AI's or infrastructure providers' retention. Local deletion in Arbiter House does not control those records.
 
 TypeSafe AI's [Privacy Policy](https://typesafe.ai/legal/privacy-policy) states that its services are hosted in the United States and that submitted input is not used to train or fine-tune models. It also provides for retention to support its services, business purposes, and legal obligations, without one fixed period for all API data. **Scoring is not a zero-retention service.**
+
+TypeSafe AI's [Master Customer Agreement](https://typesafe.ai/legal/mca) separately permits processing of customer data to generate telemetry, detect fraud or abuse, and meet legal obligations. It describes telemetry such as technical logs, hashes, statistics, and usage metrics, which may be used to improve its services. These published terms describe permitted processing; they do not establish the exact records or retention configuration used for a particular Arbiter House request.
 
 Providers may use hosting, security, and other service providers, and may disclose information as required by law. Processing may take place outside your country. TypeSafe AI's [Data Processing Addendum](https://typesafe.ai/legal/data-processing) describes its contractual processing terms and international-transfer safeguards. Contact us for information about the safeguards applicable to your request.
 
